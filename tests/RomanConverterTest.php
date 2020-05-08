@@ -4,22 +4,29 @@ use PHPUnit\Framework\TestCase;
 
 class RomanConverterTest extends TestCase
 {
-    public function testCanConvert1(): void {
-        $romanNumber = $this->convertNumber(1);
-
-        self::assertEquals("I", $romanNumber, "When taking 1 we should return 'I'");
+    public function provideBaseNumbersToRoman(): array
+    {
+        return [
+            [1, "I"],
+            [5, "V"],
+            [10, "X"]
+        ];
     }
 
-    public function testCanConvert5(): void {
-        $romanNumber = $this->convertNumber(5);
+    /**
+     * @dataProvider provideBaseNumbersToRoman
+     * @param int $inputNumber
+     * @param string $expectedRomanNumber
+     */
+    public function testCanConvertBaseNumbersToRoman(int $inputNumber, string $expectedRomanNumber): void
+    {
+        $romanNumber = $this->convertNumber($inputNumber);
 
-        self::assertEquals("V", $romanNumber, "When taking 5 we should return 'V'");
-    }
-
-    public function testCanConvert10(): void {
-        $romaNumber = $this->convertNumber(10);
-
-        self::assertEquals("X", $romaNumber, "When taking 10 we should return 'X");
+        self::assertEquals(
+            $expectedRomanNumber,
+            $romanNumber,
+            "When taking {$inputNumber} we should return {$expectedRomanNumber}"
+        );
     }
 
     private function convertNumber(int $number): string
