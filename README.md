@@ -1,9 +1,16 @@
-![CI Workflow](https://github.com/ariannasg/php-tdd-template/workflows/CI%20Workflow/badge.svg)
+![CI Workflow](https://github.com/ariannasg/RomanNumeralsKata/workflows/CI%20Workflow/badge.svg)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](.github/CONTRIBUTING.md)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 
-# Project Title
-Project description
+# Roman Numerals Kata
+The Romans wrote their numbers using letters; specifically the letters 'I' meaning '1', 'V' meaning '5', 'X' meaning '10', 'L' meaning '50', 'C' meaning '100', 'D' meaning '500', and 'M' meaning '1000'. There were certain rules that the numerals followed which should be observed.
+
+The symbols 'I', 'X', 'C', and 'M' can be repeated at most 3 times in a row. The symbols 'V', 'L', and 'D' can never be repeated. The '1' symbols ('I', 'X', and 'C') can only be subtracted from the 2 next highest values ('IV' and 'IX', 'XL' and 'XC', 'CD' and 'CM'). Only one subtraction can be made per numeral ('XC' is allowed, 'XXC' is not). The '5' symbols ('V', 'L', and 'D') can never be subtracted.
+
+**Part I**
+
+Write a program that can accept a numeric input and output the Roman numeral for the input number.
+
 
 ## Table of contents
 * [Objectives](#objectives)
@@ -15,7 +22,7 @@ Project description
 * [License](#license)
 
 ## Objectives
-Description of project objectives.
+Solving the Roman Numerals Kata using TDD with PHPUnit for training TDD principles.
 
 ## Local setup
 Follow these instructions to get the project up and running for local development and testing purposes:
@@ -38,9 +45,6 @@ Command for running all tests:
 ```
 make test
 ```
-
-## CI/CD
-Description of CI/CD setup.
 
 ## TODOs
 Please see list of [TODOs](TODO.md).
