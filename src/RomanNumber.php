@@ -12,6 +12,9 @@ class RomanNumber
     public const D = 'D';
     public const M = 'M';
 
+    /**
+     * @var string
+     */
     private $romanNumber;
 
     public function __construct(string $romanNumber)
