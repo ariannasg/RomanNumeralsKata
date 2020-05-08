@@ -19,34 +19,41 @@ class RomanConverterTest extends TestCase
 
     /**
      * @dataProvider provideBaseNumbersToRoman
-     * @param int $inputNumber
+     * @param int $arabicNumber
      * @param string $expectedRomanNumber
      */
-    public function testCanConvertBaseNumbersToRoman(int $inputNumber, string $expectedRomanNumber): void
+    public function testCanConvertOurBaseNumbers(int $arabicNumber, string $expectedRomanNumber): void
     {
-        $romanNumber = $this->convertNumber($inputNumber);
+        $resultNumber = $this->convert($arabicNumber);
 
         self::assertEquals(
             $expectedRomanNumber,
-            $romanNumber,
-            "When taking {$inputNumber} we should return {$expectedRomanNumber}"
+            $resultNumber,
+            "When taking {$arabicNumber} we should return {$expectedRomanNumber}"
         );
     }
 
-    private function convertNumber(int $number): string
+    public function testCanCovertAnyNumberThatIsNotInOurBaseMapping(): void
     {
-        $numberToRomanMapping = [
+        $resultNumber = $this->convert(3);
+        self::assertEquals("III", $resultNumber, "When taking 3 we should return III");
+    }
+
+    private function convert(int $arabicNumber): string
+    {
+        $arabicToRomanMapping = [
             1 => 'I',
             5 => 'V',
             10 => 'X',
             50 => 'L',
             100 => 'C',
             500 => 'D',
-            1000 => 'M'
+            1000 => 'M',
+            3 => 'III'
         ];
 
-        if (array_key_exists($number, $numberToRomanMapping)) {
-            return $numberToRomanMapping[$number];
+        if (array_key_exists($arabicNumber, $arabicToRomanMapping)) {
+            return $arabicToRomanMapping[$arabicNumber];
         }
 
         return '';
