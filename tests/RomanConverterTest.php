@@ -43,4 +43,11 @@ class RomanConverterTest extends TestCase
         $resultNumber = $converter->execute(3);
         self::assertEquals("III", $resultNumber, "When taking 3 we should return III");
     }
+
+    public function testRomanNumberCantContainMoreThanThreeIs(): void {
+        $converter = new RomanConverter();
+        $isValid = $converter->isRomanNumberValid('IIII');
+
+        self::assertFalse($isValid);
+    }
 }

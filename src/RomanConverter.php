@@ -20,21 +20,30 @@ class RomanConverter
             return self::BASE_NUMBERS_MAPPING[$number];
         }
 
-        return $this->recursiveConversion($number);
+        return $this->convertByAddingSmallerBases($number);
     }
 
-    private function recursiveConversion(int $number): string
+    private function convertByAddingSmallerBases(int $number): string
     {
-        $baseNumbers = array_keys(self::BASE_NUMBERS_MAPPING);
-        rsort($baseNumbers); // sort my array in reverse order: 1000, 500, 100, 50, 10, 5, 1
+        $rSortedBasedNumbers = array_keys(self::BASE_NUMBERS_MAPPING);
+        rsort($rSortedBasedNumbers); // sort my array in reverse order: 1000, 500, 100, 50, 10, 5, 1
 
         $resultRoman = '';
-        foreach ($baseNumbers as $baseNumber) {
+        foreach ($rSortedBasedNumbers as $baseNumber) {
             if ($number - $baseNumber >= 0) {
                 $newNumberToCompare = $number - $baseNumber;
-                return self::BASE_NUMBERS_MAPPING[$baseNumber] . $this->recursiveConversion($newNumberToCompare);
+                return self::BASE_NUMBERS_MAPPING[$baseNumber] . $this->convertByAddingSmallerBases($newNumberToCompare);
             }
         }
         return $resultRoman;
+    }
+
+    public function isRomanNumberValid(string $romanNumber): bool
+    {
+        if (substr_count($romanNumber, "I") > 3) {
+            return false;
+        }
+
+        return true;
     }
 }
