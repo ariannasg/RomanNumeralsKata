@@ -15,7 +15,12 @@ class RomanConverterTest extends TestCase
 
         self::assertEquals("V", $romanNumber, "When taking 5 we should return 'V'");
     }
-    
+
+    public function testCanConvert10(): void {
+        $romaNumber = $this->convertNumber(10);
+
+        self::assertEquals("X", $romaNumber, "When taking 10 we should return 'X");
+    }
 
     private function convertNumber(int $number): string
     {
@@ -25,6 +30,10 @@ class RomanConverterTest extends TestCase
 
         if ($number === 5) {
             return "V";
+        }
+
+        if ($number === 10) {
+            return "X";
         }
 
         return '';
