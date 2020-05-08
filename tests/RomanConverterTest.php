@@ -71,4 +71,25 @@ class RomanConverterTest extends TestCase
 
         self::assertFalse($isValid, "The symbol 'M' can not be repeated more than 3 times in a row");
     }
+
+    public function testRomanNumberCantContainMoreThanOneV(): void {
+        $converter = new RomanConverter();
+        $isValid = $converter->isRomanNumberValid('VV');
+
+        self::assertFalse($isValid, "The symbol 'V' can never be repeated");
+    }
+
+    public function testRomanNumberCantContainMoreThanOneL(): void {
+        $converter = new RomanConverter();
+        $isValid = $converter->isRomanNumberValid('LLL');
+
+        self::assertFalse($isValid, "The symbol 'L' can never be repeated");
+    }
+
+    public function testRomanNumberCantContainMoreThanOneD(): void {
+        $converter = new RomanConverter();
+        $isValid = $converter->isRomanNumberValid('DD');
+
+        self::assertFalse($isValid, "The symbol 'D' can never be repeated");
+    }
 }

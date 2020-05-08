@@ -56,6 +56,18 @@ class RomanConverter
             return false;
         }
 
+        if (substr_count($romanNumber, 'V') > 1) {
+            return false;
+        }
+
+        if (substr_count($romanNumber, 'L') > 1) {
+            return false;
+        }
+
+        if (substr_count($romanNumber, 'D') > 1) {
+            return false;
+        }
+
         return true;
     }
 }
