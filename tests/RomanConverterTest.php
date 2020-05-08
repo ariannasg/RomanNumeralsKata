@@ -4,6 +4,16 @@ use PHPUnit\Framework\TestCase;
 
 class RomanConverterTest extends TestCase
 {
+    private const ARABIC_TO_ROMAN_MAPPING = [
+        1 => 'I',
+        5 => 'V',
+        10 => 'X',
+        50 => 'L',
+        100 => 'C',
+        500 => 'D',
+        1000 => 'M',
+    ];
+
     public function provideBaseNumbersToRoman(): array
     {
         return [
@@ -41,21 +51,26 @@ class RomanConverterTest extends TestCase
 
     private function convert(int $arabicNumber): string
     {
-        $arabicToRomanMapping = [
-            1 => 'I',
-            5 => 'V',
-            10 => 'X',
-            50 => 'L',
-            100 => 'C',
-            500 => 'D',
-            1000 => 'M',
-            3 => 'III'
-        ];
 
-        if (array_key_exists($arabicNumber, $arabicToRomanMapping)) {
-            return $arabicToRomanMapping[$arabicNumber];
+        if (array_key_exists($arabicNumber, self::ARABIC_TO_ROMAN_MAPPING)) {
+            return self::ARABIC_TO_ROMAN_MAPPING[$arabicNumber];
         }
 
-        return '';
+        return $this->recursiveConversion($arabicNumber);
+    }
+
+    private function recursiveConversion(int $arabicNumber): string
+    {
+        $baseArabicNumbers = array_keys(self::ARABIC_TO_ROMAN_MAPPING);
+        rsort($baseArabicNumbers); // sort my array in reverse order: 1000, 500, 100, 50, 10, 5, 1
+
+        $resultRoman = '';
+        foreach ($baseArabicNumbers as $baseNumber) {
+            if ($arabicNumber - $baseNumber >= 0) {
+                $newNumberToCompare = $arabicNumber - $baseNumber;
+                return self::ARABIC_TO_ROMAN_MAPPING[$baseNumber] . $this->recursiveConversion($newNumberToCompare);
+            }
+        }
+        return $resultRoman;
     }
 }
