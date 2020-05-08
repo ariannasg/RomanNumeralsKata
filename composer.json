@@ -1,0 +1,17 @@
+{
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "phpstan/phpstan": "^0.12.23",
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "RomanNumerals\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RomanNumerals\\Test\\": "tests/"
+        }
+    }
+}
