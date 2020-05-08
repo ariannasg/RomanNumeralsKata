@@ -1,4 +1,4 @@
-![CI Workflow](https://github.com/ariannasg/RomanNumeralsKata/workflows/CI%20Workflow/badge.svg)
+[![CI Workflow](https://github.com/ariannasg/RomanNumeralsKata/workflows/CI%20Workflow/badge.svg)](https://github.com/ariannasg/RomanNumeralsKata/actions?query=workflow%3A%22CI+Workflow%22)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](.github/CONTRIBUTING.md)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 
