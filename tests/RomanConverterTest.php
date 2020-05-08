@@ -10,7 +10,10 @@ class RomanConverterTest extends TestCase
             [1, "I"],
             [5, "V"],
             [10, "X"],
-            [50, "L"]
+            [50, "L"],
+            [100, "C"],
+            [500, "D"],
+            [1000, "M"]
         ];
     }
 
@@ -36,7 +39,10 @@ class RomanConverterTest extends TestCase
             1 => 'I',
             5 => 'V',
             10 => 'X',
-            50 => 'L'
+            50 => 'L',
+            100 => 'C',
+            500 => 'D',
+            1000 => 'M'
         ];
 
         if (array_key_exists($number, $numberToRomanMapping)) {
