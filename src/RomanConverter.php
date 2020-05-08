@@ -48,6 +48,14 @@ class RomanConverter
             return false;
         }
 
+        if (substr_count($romanNumber, 'C') > 3) {
+            return false;
+        }
+
+        if (substr_count($romanNumber, 'M') > 3) {
+            return false;
+        }
+
         return true;
     }
 }
