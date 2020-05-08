@@ -10,6 +10,7 @@ The symbols 'I', 'X', 'C', and 'M' can be repeated at most 3 times in a row. The
 **Part I**
 
 Write a program that can accept a numeric input and output the Roman numeral for the input number.
+There is no need to be able to convert numbers larger than about 3000. (The Romans themselves didn’t tend to go any higher)
 
 
 ## Table of contents
