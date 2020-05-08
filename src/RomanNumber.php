@@ -15,11 +15,11 @@ class RomanNumber
     /**
      * @var string
      */
-    private $romanNumber;
+    private $value;
 
-    public function __construct(string $romanNumber)
+    public function __construct(string $value)
     {
-        $this->romanNumber = $romanNumber;
+        $this->value = $value;
     }
 
     public function isValid(): bool
@@ -42,6 +42,6 @@ class RomanNumber
      */
     private function isSymbolRepeated(string $symbol, int $times): bool
     {
-        return substr_count($this->romanNumber, $symbol) > $times;
+        return substr_count($this->value, $symbol) > $times;
     }
 }

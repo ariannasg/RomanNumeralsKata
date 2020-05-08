@@ -7,59 +7,193 @@ use RomanNumerals\RomanNumber;
 
 class RomanNumberTest extends TestCase
 {
-    public function testRomanNumberCantContainMoreThanThreeIs(): void
+    public function provideRomanNumbersWithMoreThanThreeIs(): array
     {
-        $romanNumber = new RomanNumber('IIII');
-        $isValid = $romanNumber->isValid();
-
-        self::assertFalse($isValid, "The symbol 'I' can not be repeated more than 3 times in a row");
+        return [
+            ['I', true],
+            ['II', true],
+            ['III', true],
+            ['IIII', false],
+            ['IIIII', false],
+            ['IIIIIII', false]
+        ];
     }
 
-    public function testRomanNumberCantContainMoreThanThreeXs(): void
+    public function provideRomanNumbersWithMoreThanThreeXs(): array
     {
-        $romanNumber = new RomanNumber('XXXXXX');
-        $isValid = $romanNumber->isValid();
-
-        self::assertFalse($isValid, "The symbol 'X' can not be repeated more than 3 times in a row");
+        return [
+            ['X', true],
+            ['XX', true],
+            ['XXX', true],
+            ['XXXX', false],
+            ['XXXXX', false],
+            ['XXXXXXX', false]
+        ];
     }
 
-    public function testRomanNumberCantContainMoreThanThreeCs(): void
+    public function provideRomanNumbersWithMoreThanThreeCs(): array
     {
-        $romanNumber = new RomanNumber('CCCC');
-        $isValid = $romanNumber->isValid();
-
-        self::assertFalse($isValid, "The symbol 'C' can not be repeated more than 3 times in a row");
+        return [
+            ['C', true],
+            ['CC', true],
+            ['CCC', true],
+            ['CCCC', false],
+            ['CCCCC', false],
+            ['CCCCCCC', false]
+        ];
     }
 
-    public function testRomanNumberCantContainMoreThanThreeMs(): void
+    public function provideRomanNumbersWithMoreThanThreeMs(): array
     {
-        $romanNumber = new RomanNumber('MMMMMM');
-        $isValid = $romanNumber->isValid();
-
-        self::assertFalse($isValid, "The symbol 'M' can not be repeated more than 3 times in a row");
+        return [
+            ['M', true],
+            ['MM', true],
+            ['MMM', true],
+            ['MMMM', false],
+            ['MMMMM', false],
+            ['MMMMMMM', false]
+        ];
     }
 
-    public function testRomanNumberCantContainMoreThanOneV(): void
+    public function provideRomanNumbersWithMoreThanOneV(): array
     {
-        $romanNumber = new RomanNumber('VV');
-        $isValid = $romanNumber->isValid();
-
-        self::assertFalse($isValid, "The symbol 'V' can never be repeated");
+        return [
+            ['V', true],
+            ['VV', false],
+            ['VVV', false],
+            ['VVVV', false],
+        ];
     }
 
-    public function testRomanNumberCantContainMoreThanOneL(): void
+    public function provideRomanNumbersWithMoreThanOneL(): array
     {
-        $romanNumber = new RomanNumber('LLL');
-        $isValid = $romanNumber->isValid();
-
-        self::assertFalse($isValid, "The symbol 'L' can never be repeated");
+        return [
+            ['L', true],
+            ['LL', false],
+            ['LLL', false],
+            ['LLLL', false],
+        ];
     }
 
-    public function testRomanNumberCantContainMoreThanOneD(): void
+    public function provideRomanNumbersWithMoreThanOneD(): array
     {
-        $romanNumber = new RomanNumber('DD');
-        $isValid = $romanNumber->isValid();
+        return [
+            ['D', true],
+            ['DD', false],
+            ['DDD', false],
+            ['DDDD', false],
+        ];
+    }
 
-        self::assertFalse($isValid, "The symbol 'D' can never be repeated");
+    /**
+     * @dataProvider provideRomanNumbersWithMoreThanThreeIs
+     * @param string $value
+     * @param bool $expectedIsValid
+     */
+    public function testRomanNumberCantContainMoreThanThreeIs(string $value, bool $expectedIsValid): void
+    {
+        $romanNumber = new RomanNumber($value);
+
+        self::assertEquals(
+            $expectedIsValid,
+            $romanNumber->isValid(),
+            "The symbol 'I' can not be repeated more than 3 times in a row"
+        );
+    }
+
+    /**
+     * @dataProvider provideRomanNumbersWithMoreThanThreeXs
+     * @param string $value
+     * @param bool $expectedIsValid
+     */
+    public function testRomanNumberCantContainMoreThanThreeXs(string $value, bool $expectedIsValid): void
+    {
+        $romanNumber = new RomanNumber($value);
+
+        self::assertEquals(
+            $expectedIsValid,
+            $romanNumber->isValid(),
+            "The symbol 'X' can not be repeated more than 3 times in a row"
+        );
+    }
+
+    /**
+     * @dataProvider provideRomanNumbersWithMoreThanThreeCs
+     * @param string $value
+     * @param bool $expectedIsValid
+     */
+    public function testRomanNumberCantContainMoreThanThreeCs(string $value, bool $expectedIsValid): void
+    {
+        $romanNumber = new RomanNumber($value);
+
+        self::assertEquals(
+            $expectedIsValid,
+            $romanNumber->isValid(),
+            "The symbol 'C' can not be repeated more than 3 times in a row"
+        );
+    }
+
+    /**
+     * @dataProvider provideRomanNumbersWithMoreThanThreeMs
+     * @param string $value
+     * @param bool $expectedIsValid
+     */
+    public function testRomanNumberCantContainMoreThanThreeMs(string $value, bool $expectedIsValid): void
+    {
+        $romanNumber = new RomanNumber($value);
+
+        self::assertEquals(
+            $expectedIsValid,
+            $romanNumber->isValid(),
+            "The symbol 'M' can not be repeated more than 3 times in a row"
+        );
+    }
+
+    /**
+     * @dataProvider provideRomanNumbersWithMoreThanOneV
+     * @param string $value
+     * @param bool $expectedIsValid
+     */
+    public function testRomanNumberCantContainMoreThanOneV(string $value, bool $expectedIsValid): void
+    {
+        $romanNumber = new RomanNumber($value);
+
+        self::assertEquals(
+            $expectedIsValid,
+            $romanNumber->isValid(),
+            "The symbol 'V' can never be repeated"
+        );
+    }
+
+    /**
+     * @dataProvider provideRomanNumbersWithMoreThanOneL
+     * @param string $value
+     * @param bool $expectedIsValid
+     */
+    public function testRomanNumberCantContainMoreThanOneL(string $value, bool $expectedIsValid): void
+    {
+        $romanNumber = new RomanNumber($value);
+
+        self::assertEquals(
+            $expectedIsValid,
+            $romanNumber->isValid(),
+            "The symbol 'L' can never be repeated"
+        );
+    }
+
+    /**
+     * @dataProvider provideRomanNumbersWithMoreThanOneD
+     * @param string $value
+     * @param bool $expectedIsValid
+     */
+    public function testRomanNumberCantContainMoreThanOneD(string $value, bool $expectedIsValid): void
+    {
+        $romanNumber = new RomanNumber($value);
+
+        self::assertEquals(
+            $expectedIsValid,
+            $romanNumber->isValid(),
+            "The symbol 'D' can never be repeated"
+        );
     }
 }
