@@ -5,13 +5,13 @@ namespace RomanNumerals;
 class RomanConverter
 {
     private const BASE_NUMBERS_MAPPING = [
-        1 => 'I',
-        5 => 'V',
-        10 => 'X',
-        50 => 'L',
-        100 => 'C',
-        500 => 'D',
-        1000 => 'M',
+        1 => RomanNumber::I,
+        5 => RomanNumber::V,
+        10 => RomanNumber::X,
+        50 => RomanNumber::L,
+        100 => RomanNumber::C,
+        500 => RomanNumber::D,
+        1000 => RomanNumber::M,
     ];
 
     public function execute(int $number): string
@@ -36,38 +36,5 @@ class RomanConverter
             }
         }
         return $resultRoman;
-    }
-
-    public function isRomanNumberValid(string $romanNumber): bool
-    {
-        if (substr_count($romanNumber, 'I') > 3) {
-            return false;
-        }
-
-        if (substr_count($romanNumber, 'X') > 3) {
-            return false;
-        }
-
-        if (substr_count($romanNumber, 'C') > 3) {
-            return false;
-        }
-
-        if (substr_count($romanNumber, 'M') > 3) {
-            return false;
-        }
-
-        if (substr_count($romanNumber, 'V') > 1) {
-            return false;
-        }
-
-        if (substr_count($romanNumber, 'L') > 1) {
-            return false;
-        }
-
-        if (substr_count($romanNumber, 'D') > 1) {
-            return false;
-        }
-
-        return true;
     }
 }
