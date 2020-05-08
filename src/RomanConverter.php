@@ -40,7 +40,11 @@ class RomanConverter
 
     public function isRomanNumberValid(string $romanNumber): bool
     {
-        if (substr_count($romanNumber, "I") > 3) {
+        if (substr_count($romanNumber, 'I') > 3) {
+            return false;
+        }
+
+        if (substr_count($romanNumber, 'X') > 3) {
             return false;
         }
 
