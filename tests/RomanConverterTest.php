@@ -9,7 +9,8 @@ class RomanConverterTest extends TestCase
         return [
             [1, "I"],
             [5, "V"],
-            [10, "X"]
+            [10, "X"],
+            [50, "L"]
         ];
     }
 
@@ -31,16 +32,15 @@ class RomanConverterTest extends TestCase
 
     private function convertNumber(int $number): string
     {
-        if ($number === 1) {
-            return "I";
-        }
+        $numberToRomanMapping = [
+            1 => 'I',
+            5 => 'V',
+            10 => 'X',
+            50 => 'L'
+        ];
 
-        if ($number === 5) {
-            return "V";
-        }
-
-        if ($number === 10) {
-            return "X";
+        if (array_key_exists($number, $numberToRomanMapping)) {
+            return $numberToRomanMapping[$number];
         }
 
         return '';
