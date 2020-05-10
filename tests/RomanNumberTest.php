@@ -85,6 +85,17 @@ class RomanNumberTest extends TestCase
         ];
     }
 
+    public function testCanOnlyContainSymbolsFromTheBaseAlphabet(): void
+    {
+        $romanNumber = new RomanNumber('AXIB');
+
+        self::assertEquals(
+            false,
+            $romanNumber->isValid(),
+            "Roman numbers can only contain these symbols: I, V, X, L, C, D, M"
+        );
+    }
+
     /**
      * @dataProvider provideRomanNumbersWithMoreThanThreeIs
      * @param string $value

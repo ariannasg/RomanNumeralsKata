@@ -24,15 +24,16 @@ class RomanNumber
 
     public function isValid(): bool
     {
-        return !(
-            $this->isSymbolRepeated(self::I, 3) ||
-            $this->isSymbolRepeated(self::X, 3) ||
-            $this->isSymbolRepeated(self::C, 3) ||
-            $this->isSymbolRepeated(self::M, 3) ||
-            $this->isSymbolRepeated(self::V, 1) ||
-            $this->isSymbolRepeated(self::L, 1) ||
-            $this->isSymbolRepeated(self::D, 1)
-        );
+        return $this->isEachSymbolFromTheBaseAlphabet() &&
+            !(
+                $this->isSymbolRepeated(self::I, 3) ||
+                $this->isSymbolRepeated(self::X, 3) ||
+                $this->isSymbolRepeated(self::C, 3) ||
+                $this->isSymbolRepeated(self::M, 3) ||
+                $this->isSymbolRepeated(self::V, 1) ||
+                $this->isSymbolRepeated(self::L, 1) ||
+                $this->isSymbolRepeated(self::D, 1)
+            );
     }
 
     /**
@@ -43,5 +44,20 @@ class RomanNumber
     private function isSymbolRepeated(string $symbol, int $times): bool
     {
         return substr_count($this->value, $symbol) > $times;
+    }
+
+    /**
+     * @return bool
+     */
+    private function isEachSymbolFromTheBaseAlphabet(): bool
+    {
+        // ^ Start of string, or start of line in multi-line pattern
+        // + One or more
+        // $ End of string, or end of line in multi-line pattern
+        if (preg_match('/^[IVXLCDM]+$/', $this->value)) {
+            return true;
+        }
+
+        return false;
     }
 }
