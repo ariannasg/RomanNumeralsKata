@@ -5,11 +5,15 @@ namespace RomanNumerals;
 class RomanNumber
 {
     public const I = 'I';
+    public const IV = 'IV';
     public const V = 'V';
     public const X = 'X';
+    public const IX = 'IX';
     public const L = 'L';
     public const C = 'C';
+    public const CD = 'CD';
     public const D = 'D';
+    public const CM = 'CM';
     public const M = 'M';
 
     /**
