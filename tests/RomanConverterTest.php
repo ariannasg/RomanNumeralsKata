@@ -31,7 +31,9 @@ class RomanConverterTest extends TestCase
             [1000, 'M'],
             [1066, 'MLXVI'],
             [1435, 'MCDXXXV'],
-            [1989, 'MCMLXXXIX']
+            [1989, 'MCMLXXXIX'],
+            [94, 'XCIV'],
+            [43, 'XLIII'],
         ];
     }
 

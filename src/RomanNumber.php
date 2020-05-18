@@ -9,7 +9,9 @@ class RomanNumber
     public const V = 'V';
     public const X = 'X';
     public const IX = 'IX';
+    public const XL = 'XL';
     public const L = 'L';
+    public const XC = 'XC';
     public const C = 'C';
     public const CD = 'CD';
     public const D = 'D';
