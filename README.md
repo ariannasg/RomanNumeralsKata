@@ -56,6 +56,6 @@ Please see list of [TODOs](TODO.md).
 ## Contributing
 Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for understanding the code of conduct.
 
-### License
+## License
 This project is licensed under the terms of the MIT License.
 Please see [LICENSE](LICENSE.md) for details.
